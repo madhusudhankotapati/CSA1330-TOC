@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Caption Generator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+  }
+  .image-upload-container {
+    margin: 20px 0;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .caption {
+    margin-top: 10px;a
+    font-size: 1.2em;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+  <h1>AI Image Caption Generator</h1>
+  <div class="image-upload-container">
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="uploadAndGenerateCaption()">Generate Caption</button>
+  </div>
+  <div id="imagePreviewContainer" style="display:none;">
+    <img id="imagePreview" src="" alt="Image preview">
+    <div class="caption" id="imageCaption"></div>
+  </div>
+  <script>
+    function uploadAndGenerateCaption() {
+      var input = document.getElementById('imageInput');
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var imagePreview = document.getElementById('imagePreview');
+          var imagePreviewContainer = document.getElementById('imagePreviewContainer');
+          var imageCaption = document.getElementById('imageCaption');
+          
+          imagePreview.src = e.target.result;
+          imagePreviewContainer.style.display = 'block';
+          
+          // Captions related to uploading images
+          var captions = [
+            "A cozy cabin nestled in the woods.",
+            "A playful puppy enjoying the outdoors.",
+            "A delicious spread of gourmet food.",
+            "A breathtaking view of the mountains.",
+            "A tranquil garden in full bloom.",
+            "A group of friends sharing laughter.",
+            "A vibrant cityscape at night.",
+            "A serene lake reflecting the sky.",
+            "A majestic waterfall cascading down.",
+            "A charming countryside scene.",
+            "A delicious cup of coffee on a rainy day.",
+            "A romantic stroll on the beach.",
+            "A colorful hot air balloon festival.",
+            "A peaceful morning sunrise.",
+            "A bustling market full of activity.",
+            "A historic landmark standing tall.",
+            "A cozy fireplace on a chilly evening.",
+            "A serene forest with towering trees.",
+            "A majestic eagle soaring in the sky.",
+            "A delicious slice of homemade pie.",
+            "A joyful celebration with balloons and confetti.",
+            "A scenic drive through the countryside.",
+            "A tranquil yoga session in nature.",
+            "A charming bed and breakfast in the countryside.",
+            "A lively concert with music and lights.",
+            "A whimsical carousel spinning around.",
+            "A peaceful meditation garden.",
+            "A cozy reading nook with a good book.",
+            "A breathtaking view from the top of a mountain.",
+            "A colorful garden full of butterflies.",
+            "A bustling city street filled with shops.",
+            "A rustic farmhouse with a red barn.",
+            "A tranquil pond with lily pads.",
+            "A captivating street art mural.",
+            "A charming cobblestone alleyway.",
+            "A picturesque vineyard at sunset.",
+            "A festive holiday parade with floats and music.",
+            "A serene river winding through the countryside.",
+            "A delicious picnic in the park.",
+            "A vibrant market square bustling with activity.",
+            "A charming seaside village by the ocean.",
+            "A scenic train ride through the mountains.",
+            "A cozy winter cabin covered in snow.",
+            "A tranquil waterfall hidden in the forest.",
+            "A breathtaking sunset over the ocean.",
+            "A colorful autumn landscape with falling leaves.",
+            "A majestic castle on a hilltop.",
+            "A bustling harbor with boats and ships.",
+            "A serene moonlit night with stars twinkling above."
+          ];
+
+          // Choose a random caption from the array
+          var randomIndex = Math.floor(Math.random() * captions.length);
+          imageCaption.innerText = captions[randomIndex];
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+</body>
+</html>
